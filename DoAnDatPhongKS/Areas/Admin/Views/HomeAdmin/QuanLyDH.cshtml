@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DoAnDatPhongKS.Models.Order>
+
+@{
+    ViewData["Title"] = "QuanLyDH";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Quản Lý Đơn Hàng</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                Ngày Đặt Hàng
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Tên Khách Hàng
+            </th>
+            <th>
+                Số Điện Thoại
+            </th>
+            <th>
+                Ghi Chú
+            </th>
+            <th>
+                Khách Hàng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+            </td>
+            <td>
+                    <a asp-action="DetailsDH" asp-route-id="@item.Id">Chi Tiết Đơn Hàng</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

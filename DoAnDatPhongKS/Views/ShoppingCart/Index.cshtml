@@ -1,0 +1,84 @@
+﻿@model DoAnDatPhongKS.Models.ShoppingCart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layoutcustomer.cshtml";
+
+}
+
+<section class="ftco-section ftco-cart">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="cart-list">
+					<table class="table">
+						<thead class="thead-primary">
+							<tr class="text-center">
+								<th>&nbsp;</th>
+								<th>&nbsp;</th>
+								<th>Product</th>
+								<th>Price</th>
+								<th>CheckInDate</th>
+								<th>CheckOutDate</th>
+								<th>Quantity</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model.Items)
+							{
+								<tr class="text-center">
+									<td class="product-remove"><a asp-action="RemoveFromCart" asp-route-productId="@item.ProductId" asp-route-checkindate="@item.CheckInDate" asp-route-checkoutdate="@item.CheckOutDate"><span class="icon-close"></span></a></td>
+
+									<td class="image-prod"><div class="img" style="background-image:url(@item.ImageUrl);"></div></td>
+
+									<td class="product-name">
+										<h3>@item.Name</h3>
+									</td>
+									<td class="price">@item.Price vnđ</td>
+									<td class="checkindate">
+										<h5>@item.CheckInDate</h5>
+									</td>
+									<td class="checkoutdate">
+										<h5>@item.CheckOutDate</h5>
+									</td>
+									<td class="quantity">
+										<div class="input-group mb-3">
+											<input type="text" name="quantity" class="quantity form-control input-number" value="@item.Quantity" min="1" max="100">
+										</div>
+									</td>
+									<td class="total">@item.Total vnđ</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-end">
+			<div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
+				<div class="cart-total mb-3">
+					<h3>Cart Totals</h3>
+					<p class="d-flex">
+						<span>Subtotal</span>
+						<span>@Model.Items.Sum(p=> p.Total) vnđ</span>
+					</p>
+					<p class="d-flex">
+						<span>Delivery</span>
+						<span>0.00 vnđ</span>
+					</p>
+					<p class="d-flex">
+						<span>Discount</span>
+						<span>0.00 vnđ</span>
+					</p>
+					<hr>
+					<p class="d-flex total-price">
+						<span>Total</span>
+						<span>@Model.Items.Sum(p => p.Total) vnđ</span>
+					</p>
+				</div>
+				<p class="text-center"><a asp-controller="ShoppingCart" asp-action="Checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+

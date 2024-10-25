@@ -1,0 +1,7 @@
+# Bỏ qua tất cả các file JSON
+*.json
+
+# Bỏ qua thư mục chứa thông tin nhạy cảm
+secret/
+
+DoAnDatPhongKS/bin/

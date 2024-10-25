@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "DoanhThu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>DoanhThu</h1>
+
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">Tổng số đơn hàng</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <h1>@ViewBag.SoHoaDon đơn hàng</h1>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">Tổng số thu nhập</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <h1>@ViewBag.Tongthunhap VNĐ</h1>
+            </div>
+        </div>
+    </div>
+</div>

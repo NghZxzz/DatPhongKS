@@ -1,0 +1,55 @@
+﻿@model DoAnDatPhongKS.Models.Product
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layoutcustomer.cshtml";
+}
+
+<h1>Detail</h1>
+
+<section class="ftco-section">
+	<div class="container">
+		<button class="btn btn-primary py-3 px-5" style="margin-bottom: 0.5cm; border-radius: 15px;" onclick="history.back()">Quay lại Menu</button>
+		<div class="row">
+			<div class="col-lg-6 mb-5 ftco-animate">
+				<a href="@Model.ImageUrl" class="image-popup"><img src="@Model.ImageUrl" class="img-fluid" alt="Colorlib Template"></a>
+			</div>
+			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+				@if (TempData["Error"] != null)
+				{
+					<div class="alert alert-danger">
+						@TempData["Error"]
+					</div>
+				}
+				<h3>@Model.Name</h3>
+				<p class="price"><span>@Model.Price vnđ</span></p>
+				<p>
+					Số lượng người ở: @Model.QuatityCustomer
+				</p>
+				<p>@Model.ShortDescription</p>
+				<p>
+					@Model.Description
+				</p>
+				<div class="row mt-4">
+					</div>
+					<div class="w-100"></div>
+				<form asp-controller="ShoppingCart" asp-action="AddToCart" method="post">
+					<input type="hidden" name="productId" value="@Model.Id" />
+					<div class="form-group">
+						<label for="checkInDate">Ngày Check-In:</label>
+						<input type="date" name="checkInDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+					</div>
+					<div class="form-group">
+						<label for="checkOutDate">Ngày Check-Out:</label>
+						<input type="date" name="checkOutDate" class="form-control" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" required />
+					</div>
+					<div class="form-group">
+						<label for="quantity">Số lượng phòng:</label>
+						<input type="number" name="quantity" class="form-control input-number" value="1" min="1" max="100" />
+					</div>
+					<button type="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
+				</form>
+				</div>
+		</div>
+	</div>
+</section>
