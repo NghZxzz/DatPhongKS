@@ -30,8 +30,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENyZWF0ZUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/CreateDC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENyZWF0ZURDLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/CreateSP.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENyZWF0ZVNQLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/DeleteDC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERlbGV0ZURDLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/DeleteSP.cshtml]
@@ -54,8 +62,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/EditDC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXREQy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/QuanLyDC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFF1YW5MeURDLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/BaitapC\#/DoAnDatPhongKS/DoAnDatPhongKS/Areas/Admin/Views/HomeAdmin/QuanLyDH.cshtml]

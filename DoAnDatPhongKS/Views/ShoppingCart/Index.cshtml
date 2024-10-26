@@ -56,24 +56,32 @@
 		</div>
 		<div class="row justify-content-end">
 			<div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
+				@if (TempData["Error"] != null)
+				{
+					<div class="alert alert-danger">
+						@TempData["Error"]
+					</div>
+				}
+				<form asp-controller="ShoppingCart" asp-action="ApplyDiscount" method="post">
+					<label for="discountCode">Discount Code:</label>
+					<input type="text" id="discountCode" name="discountCode" class="form-control" />
+					<button type="submit" class="btn btn-primary py-3 px-4" style="color: yellow !important;">Apply Discount</button>
+				</form>
+				<Br />
 				<div class="cart-total mb-3">
 					<h3>Cart Totals</h3>
 					<p class="d-flex">
 						<span>Subtotal</span>
-						<span>@Model.Items.Sum(p=> p.Total) vnđ</span>
-					</p>
-					<p class="d-flex">
-						<span>Delivery</span>
-						<span>0.00 vnđ</span>
+						<span>@Model.Subtotal.ToString("N0") vnđ</span>
 					</p>
 					<p class="d-flex">
 						<span>Discount</span>
-						<span>0.00 vnđ</span>
+						<span>@Model.Discount.ToString("N0") vnđ</span>
 					</p>
 					<hr>
 					<p class="d-flex total-price">
 						<span>Total</span>
-						<span>@Model.Items.Sum(p => p.Total) vnđ</span>
+						<span>@Model.Total.ToString("N0") vnđ</span>
 					</p>
 				</div>
 				<p class="text-center"><a asp-controller="ShoppingCart" asp-action="Checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

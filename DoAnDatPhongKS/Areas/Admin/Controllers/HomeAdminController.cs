@@ -186,5 +186,71 @@ namespace DoAnDatPhongKS.Areas.Admin.Controllers
             ViewBag.SoHoaDon= _context.Orders.Count();
             return View();
         }
-    }
+        [Route("quanlydiscount")]
+        public async Task<IActionResult> QuanLyDC()
+		{
+			var discountCodes = await _context.DiscountCodes.ToListAsync();
+			return View(discountCodes);
+		}
+        [Route("createdc")]
+        // Tạo mã giảm giá mới
+        public IActionResult CreateDC()
+		{
+			return View();
+		}
+        [Route("createdc")]
+        [HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> CreateDC(DiscountCode discountCode)
+		{
+			if (ModelState.IsValid)
+			{
+				_context.DiscountCodes.Add(discountCode);
+				await _context.SaveChangesAsync();
+				return RedirectToAction(nameof(QuanLyDC));
+			}
+			return View(discountCode);
+		}
+        [Route("editdc")]
+        // Sửa mã giảm giá
+        public async Task<IActionResult> EditDC(int id)
+		{
+			var discountCode = await _context.DiscountCodes.FindAsync(id);
+			if (discountCode == null) return NotFound();
+			return View(discountCode);
+		}
+        [Route("editdc")]
+        [HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> EditDC(int id, DiscountCode discountCode)
+		{
+			if (id != discountCode.Id) return NotFound();
+
+			if (ModelState.IsValid)
+			{
+				_context.Update(discountCode);
+				await _context.SaveChangesAsync();
+				return RedirectToAction(nameof(QuanLyDC));
+			}
+			return View(discountCode);
+		}
+        [Route("deletedc")]
+        // Xóa mã giảm giá
+        public async Task<IActionResult> DeleteDC(int id)
+		{
+			var discountCode = await _context.DiscountCodes.FindAsync(id);
+			if (discountCode == null) return NotFound();
+			return View(discountCode);
+		}
+
+		[HttpPost, ActionName("DeleteDC")]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> DeleteDCConfirmed(int id)
+		{
+			var discountCode = await _context.DiscountCodes.FindAsync(id);
+			_context.DiscountCodes.Remove(discountCode);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(QuanLyDC));
+		}
+	}
 }

@@ -5,6 +5,7 @@ using DoAnDatPhongKS.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoAnDatPhongKS.Controllers
 {
@@ -80,6 +81,32 @@ namespace DoAnDatPhongKS.Controllers
 		public IActionResult Checkout()
 		{
 			return View(new Order());
+		}
+		[HttpPost]
+		public async Task<IActionResult> ApplyDiscount(string discountCode)
+		{
+			// Tìm mã giảm giá trong cơ sở dữ liệu
+			var discount = await _context.DiscountCodes.FirstOrDefaultAsync(d => d.Code == discountCode && d.ExpiryDate >= DateTime.Now);
+
+			if (discount == null)
+			{
+				TempData["Error"] = "Discount code không tồn tại hoặc đã hết hạn.";
+				return RedirectToAction("Index");
+			}
+
+			// Lấy giỏ hàng từ Session
+			var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart");
+			if (cart == null)
+			{
+				TempData["Error"] = "Giỏ hàng bạn đang trống không.";
+				return RedirectToAction("Index");
+			}
+
+			// Tính toán tổng tiền giảm giá và lưu lại trong Session
+			cart.DiscountPercentage = discount.DiscountPercentage;
+			HttpContext.Session.SetObjectAsJson("Cart", cart);
+
+			return RedirectToAction("Index");
 		}
 
 		[HttpPost]

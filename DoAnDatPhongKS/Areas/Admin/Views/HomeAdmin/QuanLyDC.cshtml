@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DoAnDatPhongKS.Models.DiscountCode>
+@{
+    ViewData["Title"] = "Discount Codes";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách Discount Codes</h1>
+
+<p>
+    <a asp-action="CreateDC" class="btn btn-primary">Create New Discount Code</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Discount Percentage</th>
+            <th>Expiry Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Code</td>
+                <td>@item.DiscountPercentage %</td>
+                <td>@item.ExpiryDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

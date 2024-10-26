@@ -290,3 +290,4 @@ C:\BaitapC#\DoAnDatPhongKS\DoAnDatPhongKS\obj\Debug\net8.0\refint\DoAnDatPhongKS
 C:\BaitapC#\DoAnDatPhongKS\DoAnDatPhongKS\obj\Debug\net8.0\DoAnDatPhongKS.pdb
 C:\BaitapC#\DoAnDatPhongKS\DoAnDatPhongKS\obj\Debug\net8.0\DoAnDatPhongKS.genruntimeconfig.cache
 C:\BaitapC#\DoAnDatPhongKS\DoAnDatPhongKS\obj\Debug\net8.0\ref\DoAnDatPhongKS.dll
+C:\BaitapC#\DoAnDatPhongKS\DoAnDatPhongKS\obj\Debug\net8.0\DoAnDatPhongKS.sourcelink.json
