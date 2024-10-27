@@ -22,6 +22,12 @@
                 Số lượng
             </th>
             <th>
+                Ngày Check In
+            </th>
+            <th>
+                Ngày Check Out
+            </th>
+            <th>
                 Thành tiền
             </th>
         </tr>
@@ -41,6 +47,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckInDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOutDate)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>

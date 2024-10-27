@@ -121,12 +121,15 @@ namespace DoAnDatPhongKS.Controllers
 
 			var user = await _userManager.GetUserAsync(User);
 			order.UserId = user.Id;
+			order.Status = "Đang xử lý";
 			order.OrderDate = DateTime.UtcNow;
-			order.TotalPrice = cart.Items.Sum(i => i.Total);
+			order.TotalPrice = Convert.ToInt32(cart.Total);
 			order.OrderDetails = cart.Items.Select(i => new OrderDetail
 			{
 				ProductId = i.ProductId,
 				Quantity = i.Quantity,
+				CheckInDate = i.CheckInDate,
+				CheckOutDate = i.CheckOutDate,
 				Price = i.Price,
 			}).ToList();
 
@@ -143,5 +146,20 @@ namespace DoAnDatPhongKS.Controllers
 
 			return View();
 		}
-	}
+        public async Task<IActionResult> History()
+        {
+            var user = await _userManager.GetUserAsync(User);
+			var order = await _context.Orders.Where(i=> i.UserId == user.Id).ToListAsync();
+            return View(order);
+        }
+        public async Task<IActionResult> DetailsDH(int id)
+        {
+            var order = await _context.OrderDetails.Include(x => x.Order).Include(x => x.Product).Where(x => x.OrderId == id).ToListAsync();
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return View(order);
+        }
+    }
 }

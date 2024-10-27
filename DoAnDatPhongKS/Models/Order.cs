@@ -12,8 +12,9 @@ namespace DoAnDatPhongKS.Models
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
 		public string Notes { get; set; }
+        public string? Status { get; set; }
 
-		[ForeignKey("UserId")]
+        [ForeignKey("UserId")]
 		[ValidateNever]
 		public ApplicationUser ApplicationUser { get; set; }
 		public List<OrderDetail> OrderDetails { get; set; }

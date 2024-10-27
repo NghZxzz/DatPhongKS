@@ -55,13 +55,13 @@
                     }
                     <li class="nav-item"><a asp-controller="Home" asp-action="index" class="nav-link">Home</a></li>
                     <li class="nav-item"><a asp-controller="Shop" asp-action="index" class="nav-link">Shop</a></li>
-                    <li class="nav-item"><a asp-controller="Home" asp-action="services" class="nav-link">Services</a></li>
 
                     <li class="nav-item cart"><a asp-controller="ShoppingCart" asp-action="index" class="nav-link"><span class="icon icon-shopping_cart"></a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
+                        <li class="nav-item"><a asp-controller="ShoppingCart" asp-action="history" class="nav-link">History</a></li>
                         <li class="nav-item">
-                            <a id="manage" class="nav-link text-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                            <a id="manage" class="nav-link text-warning" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                         </li>
                         <li class="nav-item">
                             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

@@ -13,8 +13,9 @@ namespace DoAnDatPhongKS.Models
         public DateTime CheckOutDate { get; set; }
         public decimal Price { get; set; }
         [NotMapped]
-        public int Total => Convert.ToInt32(Price) * Quantity;
-
+        public int TotalDays => (CheckOutDate - CheckInDate).Days;
+        [NotMapped]
+        public int Total => Convert.ToInt32(Price) * Quantity * TotalDays;
         [ForeignKey("OrderId")]
         [ValidateNever]
         public Order Order { get; set; }

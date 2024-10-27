@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DoAnDatPhongKS.Models.Order>
+
+@{
+    ViewData["Title"] = "History";
+    Layout = "~/Views/Shared/_Layoutcustomer.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>Lịch sử đơn đặt phòng</h1>
+<div class="col-xl-8 mx-auto d-flex justify-content-center align-items-center ftco-animate" style="background-image:url(~/images/bg_3.jpg);">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalPrice)</th>
+                <th>@Html.DisplayNameFor(model => model.CustomerName)</th>
+                <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td><a asp-action="DetailsDH" asp-route-id="@item.Id">Chi Tiết Đơn Hàng</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

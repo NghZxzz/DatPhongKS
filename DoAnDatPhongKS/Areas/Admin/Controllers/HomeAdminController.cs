@@ -252,5 +252,39 @@ namespace DoAnDatPhongKS.Areas.Admin.Controllers
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(QuanLyDC));
 		}
-	}
+        [Route("AcceptOrder")]
+
+        public async Task<IActionResult> AcceptOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null && order.Status == "Đang xử lý")
+            {
+                order.Status = "Đã chấp thuận";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("QuanLyDH");
+        }
+        [Route("RejectOrder")]
+        public async Task<IActionResult> RejectOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null && order.Status == "Đang xử lý")
+            {
+                order.Status = "Từ chối";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("QuanLyDH");
+        }
+        [Route("ReturnOrder")]
+        public async Task<IActionResult> ReturnOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null)
+            {
+                order.Status = "Đang xử lý";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("QuanLyDH");
+        }
+    }
 }

@@ -28,6 +28,7 @@
             <th>
                 Khách Hàng
             </th>
+            <th>Trạng Thái</th>
             <th></th>
         </tr>
     </thead>
@@ -52,7 +53,35 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
             </td>
+                <td>
+                    @if (item.Status == "Đang xử lý")
+                    {
+                        <span class="badge text-dark" style="background-color: yellow;">Đang xử lý</span>
+                    }
+                    else if (item.Status == "Đã chấp thuận")
+                    {
+                        <span class="badge text-white" style="background-color: green;">Đã chấp thuận</span>
+                    }
+                    else if (item.Status == "Từ chối")
+                    {
+                        <span class="badge text-white" style="background-color: red;">Từ chối</span>
+                    }
+                    else
+                    {
+                        <span>@item.Status</span>
+                    }
+                </td>
             <td>
+                    @if (item.Status == "Đang xử lý")
+                    {
+                        <a asp-action="AcceptOrder"  asp-route-id="@item.Id" class="btn btn-success btn-sm">Chấp nhận</a>
+                        <a asp-action="RejectOrder" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Từ chối</a>
+                    }
+                    @if (item.Status == "Đã chấp thuận" || item.Status == "Từ chối" || item.Status == "")
+                    {
+                        <a asp-action="ReturnOrder" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">Xem xét lại</a>
+                    }
+                    |
                     <a asp-action="DetailsDH" asp-route-id="@item.Id">Chi Tiết Đơn Hàng</a>
             </td>
         </tr>
